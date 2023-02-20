@@ -6,3 +6,5 @@ It seems like in todays world, whenever you decide you want to see a specific mo
 
 ### Render Link
 [Stream Theater on Render](https://stream-theater-final-project.onrender.com)
+
+4. Liefe Sutliff can handle rejection.
