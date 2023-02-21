@@ -19,8 +19,8 @@ CREATE TABLE users (
 );
 
 CREATE TABLE users_movies (
-  user_id INTEGER PRIMARY KEY,
-  movie_id INTEGER PRIMARY KEY  
+  user_id INTEGER NOT NULL,
+  movie_id INTEGER NOT NULL  
 );
 
 CREATE TABLE movies (
@@ -34,8 +34,8 @@ CREATE TABLE movies (
 );
 
 CREATE TABLE movie_cast (
-  movie_id INTEGER PRIMARY KEY,
-  actor_id INTEGER PRIMARY KEY  
+  movie_id INTEGER NOT NULL,
+  actor_id INTEGER NOT NULL  
 );
 
 CREATE TABLE actors (
@@ -45,8 +45,8 @@ CREATE TABLE actors (
 );
 
 CREATE TABLE services_movies (
-  movie_id INTEGER PRIMARY KEY,
-  service_id INTEGER PRIMARY KEY  
+  movie_id INTEGER NOT NULL,
+  service_id INTEGER NOT NULL  
 );
 
 CREATE TABLE streaming_services (
@@ -56,7 +56,7 @@ CREATE TABLE streaming_services (
   service_region_id INTEGER NOT NULL,
 );
 
-CREATE TABLE regionss (
+CREATE TABLE regions (
   region_id SERIAL PRIMARY KEY,
   region_name TEXT NOT NULL,
   region_description TEXT NOT NULL
