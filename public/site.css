@@ -1,0 +1,94 @@
+body {
+  background-image: url('curtains2.jpg');
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  height: 200px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  width: 1090px;
+}
+
+header h1 {
+    margin-left: 3.75em;
+    font-size: 70px;
+    color: antiquewhite;
+}
+
+main {
+  background: rgba(19, 2, 75, 0.8);
+  border-style: solid;
+  border-width: 1px;
+  border-color: #FFF;
+  border-radius: 5px 5px 0 0;
+  color: #FFF;
+  font-family: Helvetica, sans-serif;
+  margin: 10px auto;
+  width: 1090px;
+  
+}
+
+h2{
+    margin: 2em;
+    width: 100%;
+}
+
+ p {
+  margin: 20px;
+}
+
+/* Menu Styles */
+
+nav {
+  margin: 10px auto;
+  width: 1090px;
+  
+}
+
+nav ul li a {
+  margin: 10px 1px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+nav ul a {
+  background-color: rgba(19, 2, 75, 0.6);
+  border-color: #FFF;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-family: Helvetica, sans-serif;
+  color: #FFF;
+  padding: 0 20px;
+  font-size: 125%;
+  display: block;
+    
+}
+
+nav ul a:hover {
+  background-color: #8A0000;
+  border-color: rgba(19, 2, 75, 0.8);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  color: #FFF;
+}
+
+p {
+  margin: 20px;
+}
+
+h4 {
+  margin: 20px;
+}
+
