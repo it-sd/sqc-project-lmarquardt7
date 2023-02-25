@@ -7,4 +7,7 @@ It seems like in todays world, whenever you decide you want to see a specific mo
 ### Render Link
 [Stream Theater on Render](https://stream-theater-final-project.onrender.com)
 
+### Entity Realtionship Diagram
+![Stream Theater's ERD](/docs/ERD.png)
+
 4. Hello from joconnor10!

@@ -1,0 +1,11 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Index of movies</h2>
+    <ol>
+    <%_ for (const movie of movies) { _%>
+      <li><a href="/<%= movie.movie_id %>"><%= movie.movie_name %></a></li> 
+    <%_ } _%>
+    </ol>
+  </main>
+</body>
+</html>
