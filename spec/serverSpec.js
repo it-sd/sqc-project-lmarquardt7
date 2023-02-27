@@ -1,5 +1,4 @@
-const { queryAllMovies } =
-  require('../server.js')
+const { queryAllMovies } = require('../server.js')
 
 describe('server', function () {
   const baseUrl = 'http://localhost:5163'

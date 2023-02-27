@@ -51,7 +51,7 @@ express()
   .get('/health', async function (req, res) {
     const movies = await queryAllMovies() // Forgot () for function
     if (movies != null) {
-      res.status(200).send('healthy') // Changed Healthy to healthy 
+      res.status(200).send('healthy') // Changed Healthy to healthy
     } else {
       res.status(500).send('Database connection has failed')
     }
