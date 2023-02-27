@@ -32,7 +32,7 @@ const queryAllMovies = async function () {
   const sql = 'SELECT * FROM movies;'
 
   const results = await query(sql)
-  return { movies: results}
+  return { movies: results }
 }
 
 express()
@@ -48,26 +48,23 @@ express()
     res.render('pages/about')
   })
 
-  
   .get('/health', async function (req, res) {
-    const movies = await queryAllMovies
+    const movies = await queryAllMovies() // Forgot () for function
     if (movies != null) {
-      res.status(200).send('Healthy')
+      res.status(200).send('healthy') // Changed Healthy to healthy 
     } else {
-     res.status(500).send('Database connection has failed')
+      res.status(500).send('Database connection has failed')
     }
   })
-
 
   .get('/list', async function (req, res) {
     const movies = await queryAllMovies()
     res.render('pages/list', movies)
   })
 
-
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
-  module.exports = {  
-    query,
-    queryAllMovies
-  } //function names
+module.exports = {
+  query,
+  queryAllMovies
+} // function names

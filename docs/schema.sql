@@ -41,7 +41,7 @@ CREATE TABLE movie_cast (
 CREATE TABLE actors (
   actor_id SERIAL PRIMARY KEY,
   actor_first_name TEXT NOT NULL,
-  actor_last_name TEXT NOT NULL,
+  actor_last_name TEXT NOT NULL
 );
 
 CREATE TABLE services_movies (
@@ -53,7 +53,7 @@ CREATE TABLE streaming_services (
   service_id SERIAL PRIMARY KEY,
   service_name TEXT NOT NULL,
   service_url TEXT NOT NULL,
-  service_region_id INTEGER NOT NULL,
+  service_region_id INTEGER NOT NULL
 );
 
 CREATE TABLE regions (
