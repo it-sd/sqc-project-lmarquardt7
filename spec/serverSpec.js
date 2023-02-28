@@ -28,4 +28,27 @@ describe('server', function () {
   describe("GET '/'", function () {
     shouldBeLessThan399('/')
   })
+  describe("POST '/user'", function () {
+    const url = new URL('/user', baseUrl)
+    it('should accept user information', async function () {
+      const data = {
+        username: 'userName1',
+        password: 'Password1',
+        firstName: 'John',
+        lastName: 'Smith',
+        region: 1
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      expect(response.ok).toBeTrue()
+
+      const results = await response.json()
+      expect(results.ok).toBeTrue()
+    })
 })
