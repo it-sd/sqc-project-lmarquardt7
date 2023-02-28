@@ -81,13 +81,15 @@ express()
     
         
       const insertSql = `INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES (${username}, ${password}, ${firstName}, ${lastName}, 1);`
-      await client.query(insertSql)
 
+      await client.query(insertSql)
       res.json({ ok: true })
       client.release()
     } catch (error) {
       // send back success false if catch runs
-      console.error('Invalid password')
+
+
+      console.error('Invalid Entry')
       res.status(400).json({ ok: false })
     }
     // End of your code ////////////////////////////////////

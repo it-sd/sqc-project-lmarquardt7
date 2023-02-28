@@ -17,11 +17,13 @@
   </main>
   <script>
       
+      const main = document.querySelector('main')
+      
       const username = document.getElementById('username-field')
       const password = document.getElementById('password-field')
       const firstName = document.getElementById('firstName-field')
-      const lastName = document.getElementById('Lastname-field')
-      const submit = document.getElementById('login-form-submit')
+      const lastName = document.getElementById('lastName-field')
+      const submitButton = document.getElementById('login-form-submit')
       
       
       
@@ -44,37 +46,29 @@ const submit = async function () {
     firstName: first,
     lastName: last
   }
-
-    .post('/user', async function (req, res) {
-    // Your code here //////////////////////////////////////
-    res.set({ 'Content-Type': 'application/json' })
-
-    try {
-      // This is where we will eventually, I assume, save password to database
-      // send back success true if try works
-      const password = req.body.password
-      const validPassword = validatePassword(password)
-
-      if (validPassword === true) {
-        res.json({ ok: true })
-      } else {
-        console.error('Invalid password test')
-        res.status(400).json({ ok: false })
-      }
-    } catch (error) {
-      // send back success false if catch runs
-      console.error('Invalid password')
-      res.status(400).json({ ok: false })
-    }
-    // End of your code ////////////////////////////////////
+  
+    const response = await fetch('/user', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
   })
+
+  if (response.ok) {
+    const result = await response.json()
+    if (result.ok) {
+      main.innerHTML = '<h1>Success!</h1>'
+      return
+    }
+  }
+
+  main.innerHTML = '<h1>Server error</h1>'
+
 // End of your code ////////////////////////////////////////
 }
-
-
-  
-
-submit.addEventListener('click', (e) => submit())
+submitButton.addEventListener('click', (e) => submit())
 
   </script>
 </body>
