@@ -47,7 +47,6 @@ express()
   .get('/about', (req, res) => {
     res.render('pages/about')
   })
-
   .get('/health', async function (req, res) {
     const movies = await queryAllMovies() // Forgot () for function
     if (movies != null) {
@@ -56,12 +55,51 @@ express()
       res.status(500).send('Database connection has failed')
     }
   })
-
   .get('/list', async function (req, res) {
     const movies = await queryAllMovies()
     res.render('pages/list', movies)
   })
 
+
+  .get('/login', (req, res) => {
+    res.render('pages/login')
+  })
+
+  .post('/user', async function (req, res) {
+    // Your code here //////////////////////////////////////
+    res.set({ 'Content-Type': 'application/json' })
+
+    try {
+      // This is where we will eventually, I assume, save password to database
+      // send back success true if try works
+      const client = await pool.connect()
+      
+      const username = req.body.username
+      const password = req.body.password
+      const firstName = req.body.firstName
+      const lastName = req.body.lastName
+    
+        
+      const insertSql = `INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES (${username}, ${password}, ${firstName}, ${lastName}, 1);`
+      await client.query(insertSql)
+
+      res.json({ ok: true })
+      client.release()
+    } catch (error) {
+      // send back success false if catch runs
+      console.error('Invalid password')
+      res.status(400).json({ ok: false })
+    }
+    // End of your code ////////////////////////////////////
+  })
+
+
+
+
+
+
+
+  
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 module.exports = {

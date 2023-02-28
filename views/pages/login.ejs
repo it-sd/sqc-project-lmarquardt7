@@ -1,0 +1,81 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Welcome to Stream Theater's Create User Page</h2>
+      
+      <div id="loginForm">
+      
+          <h3 id="login-header">New Audience Member</h3>
+
+        <form id="login-form">
+          <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+          <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+          <input type="text" name="firstName" id="firstName-field" class="login-form-field" placeholder="First Name">
+          <input type="text" name="LastName" id="lastName-field" class="login-form-field" placeholder="Last Name">
+          <input type="submit" value="Login" id="login-form-submit">
+        </form>
+    </div>
+  </main>
+  <script>
+      
+      const username = document.getElementById('username-field')
+      const password = document.getElementById('password-field')
+      const firstName = document.getElementById('firstName-field')
+      const lastName = document.getElementById('Lastname-field')
+      const submit = document.getElementById('login-form-submit')
+      
+      
+      
+      
+      
+const submit = async function () {
+
+
+  main.innerHTML = '<h1>Please wait</h1>'
+
+  
+  const user = username.value
+  const pass = password.value
+  const first = firstName.value
+  const last = lastName.value
+
+  const data = {
+    username: user,
+    password: pass,
+    firstName: first,
+    lastName: last
+  }
+
+    .post('/user', async function (req, res) {
+    // Your code here //////////////////////////////////////
+    res.set({ 'Content-Type': 'application/json' })
+
+    try {
+      // This is where we will eventually, I assume, save password to database
+      // send back success true if try works
+      const password = req.body.password
+      const validPassword = validatePassword(password)
+
+      if (validPassword === true) {
+        res.json({ ok: true })
+      } else {
+        console.error('Invalid password test')
+        res.status(400).json({ ok: false })
+      }
+    } catch (error) {
+      // send back success false if catch runs
+      console.error('Invalid password')
+      res.status(400).json({ ok: false })
+    }
+    // End of your code ////////////////////////////////////
+  })
+// End of your code ////////////////////////////////////////
+}
+
+
+  
+
+submit.addEventListener('click', (e) => submit())
+
+  </script>
+</body>
+</html>
