@@ -60,7 +60,6 @@ express()
     res.render('pages/list', movies)
   })
 
-
   .get('/login', (req, res) => {
     res.render('pages/login')
   })
@@ -73,21 +72,24 @@ express()
       // This is where we will eventually, I assume, save password to database
       // send back success true if try works
       const client = await pool.connect()
-      
+
       const username = req.body.username
       const password = req.body.password
       const firstName = req.body.firstName
       const lastName = req.body.lastName
-    
-        
-      const insertSql = `INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES (${username}, ${password}, ${firstName}, ${lastName}, 1);`
+      const region = 1
 
+      // const insertSql = 'INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES (' + username + ', ' + password + ', ' + firstName + ', ' + lastName + ', ' + region + ');'
+
+      const insertSql = `INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES ($1::TEXT, $2::TEXT, $3::TEXT, $4::TEXT, $5::TEXT);`
+
+      console.log(insertSql, [username, password, firstName, lastName, region])
       await client.query(insertSql)
+
       res.json({ ok: true })
       client.release()
     } catch (error) {
       // send back success false if catch runs
-
 
       console.error('Invalid Entry')
       res.status(400).json({ ok: false })
@@ -95,13 +97,6 @@ express()
     // End of your code ////////////////////////////////////
   })
 
-
-
-
-
-
-
-  
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 module.exports = {
