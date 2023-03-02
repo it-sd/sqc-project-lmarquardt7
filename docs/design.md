@@ -3,7 +3,7 @@
 Project Analysis
 -----------
 
-### Usability Heuristics
+## Usability Heuristics
 
 #### 8. Aesthetic and Minimalist Design
   - Modification 1: Simplify my aesthetic choices and modify my color scheme to reflect a more minimalist design
@@ -34,3 +34,12 @@ Project Analysis
 
 ##### Too Many Blues = Not Minimalistic and Bad Visibility
 ![TooManyBlues](https://user-images.githubusercontent.com/96221850/220836164-5622c72e-3dab-4f9c-b20b-4b319eaee6a8.png)
+
+
+## Color Scheme
+
+  This week's module, Module 6, discussed the importance of color schemes when it comes to creating a website. For the most part, I feel I tried to stick to the 60/30/10 rule that was discussed in the article ['Using Color to Enhance Your Design'](https://www.nngroup.com/articles/color-enhance-design/) by Kelley Gordon at NN/g. This rule says that our dominant color should take up about 60% of our page, a secondary color should take up 30%, and 10% should be an accent color. If you look at my pages, pictured above, you will see that the primary color, a darkish red (138,0,0), does in fact take up the majority of the screen. The color appears in the form of a movie theater curtain, which after all is my underlying theme for the entire website. I wanted to choose colors, and fonts for that matter, that reflect the emotions of actually going to a movie theater. In which, the general appearance is rather dark, with a few splashes of color, with red being my splash of color. Other than this red I utilize a series of darker colors to invoke the dark atmosphere, using a navy blue (19, 2, 75) as my secondary color, and both white and black acting as accent colors. Together, this color combination could be best described as similar to a triad color scheme or even a split complementary with a few colors missing, but in reality, it is actually a custom color scheme that I feel plays well together and captures the feel I aim to achieve.
+  
+![ColorScheme](https://user-images.githubusercontent.com/96221850/222372114-102bc66b-4f42-4ddc-ba16-6b902d944783.png)
+
+## Typography
