@@ -29,9 +29,12 @@
                     <div class="progress-bar" style="width: 100%;">
                     </div>
                 </div>
-                <div class="hide" id="search-by-title-response">
+                <div id="results">
                     <p>Results:</p>
                     <pre class="alert alert-success" style="margin-bottom: 0px; white-space: normal;"></pre>
+                    <div id="displayResults">
+                        <h1>Results displayed here!</h1>
+                    </div>
                 </div>
             </fieldset>
             </form>
@@ -39,15 +42,60 @@
     </main>
     <script>
         
+        /*
         const fetch = require('node-fetch');
 
-        let url = 'https://api.watchmode.com/v1/search/?apiKey=BKrbOhwMounsJ1t1G4n1uTnPKRJezYCPbwqWv7FR&search_field=name&search_value=Ed%20Wood';
+        let url = 'https://api.watchmode.com/v1/search/?apiKey=BKrbOhwMounsJ1t1G4n1uTnPKRJezYCPbwqWv7FR&search_field=name&search_value=Hackers';
 
         fetch(url, { method: 'Get' })
             .then((res) => res.json())
             .then((json) => {
             console.log(json);
         });
+        */
+        
+       
+    
+        
+        const resultsDisplay = document.getElementById('displayResults')
+        const title = document.getElementById('t')
+        
+        
+        const submit = async function () {
+
+
+          resultsDisplay.innerHTML = '<h1>Searching...</h1>'
+
+          // password already validated on client side
+          
+
+          const data = {
+            title: title.value 
+          }
+
+          const response = await fetch('/search', {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+
+          if (response.ok) {
+            const result = await response.json()
+            if (result.ok) {
+              //main.innerHTML = 
+              return
+            }
+          }
+
+          main.innerHTML = '<h1>Connection Error</h1>'
+
+        
+        }
+        
+        register.addEventListener('click', (e) => submit())
 
     
 
