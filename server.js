@@ -1,6 +1,9 @@
 require('dotenv').config()
 const express = require('express')
 const path = require('path')
+// const fetch = require('node-fetch')
+// import fetch from 'node-fetch'
+//import('node-fetch')
 const PORT = process.env.PORT || 5163
 
 const { Pool } = require('pg')
@@ -58,6 +61,24 @@ express()
   .get('/list', async function (req, res) {
     const movies = await queryAllMovies()
     res.render('pages/list', movies)
+  })
+  .get('/search', (req, res) => {
+    res.render('pages/search')
+  })
+  .post('/search', (req, res) => {
+    const title = req.body.title
+    const apiKey = process.env.OMDb_API_KEY
+    const url_api = `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
+
+    try {
+      fetch(url_api, {method: 'Get'})
+      import('node-fetch')
+      .then(res => res.json())
+      .then(data => console.log(data));
+    } catch (err) {
+
+    } 
+ 
   })
 
   .get('/login', (req, res) => {

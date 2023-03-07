@@ -1,0 +1,56 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Welcome to Stream Theater's Search Page</h2>
+
+       <div class="searchDiv">
+            <form class="searchForm" id="search-by-title" onsubmit="return false;">
+            <fieldset>
+                <legend>By Title</legend>
+                <div>
+                    
+                    <label class="control-label" for="t">Title:</label>
+                    <input type="text" id="t" name="t" class="input-small">
+                    
+                    <label class="control-label" for="y">Year:</label>
+                    <input type="text" id="y" name="y" class="input-small" style="width: 100px;">
+                    
+                    <label class="control-label">Plot:</label>
+                    <select name="plot" style="width: 100px;">
+                        <option value="" selected="">Short</option>
+                        <option value="full">Full</option>
+                    </select>
+                    <button id="search-by-title-button" type="button" class="btn-sm btn-primary">Search</button>
+                    <button id="search-by-title-reset" type="reset" class="btn-sm">Reset</button>
+                </div>
+                <div class="hide" id="search-by-title-request">
+                    <br />
+                </div>
+                <div id="search-by-title-progress" class="hide progress progress-info progress-striped active">
+                    <div class="progress-bar" style="width: 100%;">
+                    </div>
+                </div>
+                <div class="hide" id="search-by-title-response">
+                    <p>Results:</p>
+                    <pre class="alert alert-success" style="margin-bottom: 0px; white-space: normal;"></pre>
+                </div>
+            </fieldset>
+            </form>
+        </div>
+    </main>
+    <script>
+        
+        const fetch = require('node-fetch');
+
+        let url = 'https://api.watchmode.com/v1/search/?apiKey=BKrbOhwMounsJ1t1G4n1uTnPKRJezYCPbwqWv7FR&search_field=name&search_value=Ed%20Wood';
+
+        fetch(url, { method: 'Get' })
+            .then((res) => res.json())
+            .then((json) => {
+            console.log(json);
+        });
+
+    
+
+    </script>
+</body>
+</html>
