@@ -3,7 +3,7 @@
 Project Analysis
 -----------
 
-### Usability Heuristics
+## Usability Heuristics
 
 #### 8. Aesthetic and Minimalist Design
   - Modification 1: Simplify my aesthetic choices and modify my color scheme to reflect a more minimalist design
@@ -34,3 +34,18 @@ Project Analysis
 
 ##### Too Many Blues = Not Minimalistic and Bad Visibility
 ![TooManyBlues](https://user-images.githubusercontent.com/96221850/220836164-5622c72e-3dab-4f9c-b20b-4b319eaee6a8.png)
+
+
+## Color Scheme
+
+  This week's module, Module 6, discussed the importance of color schemes when it comes to creating a website. For the most part, I feel I tried to stick to the 60/30/10 rule that was discussed in the article ['Using Color to Enhance Your Design'](https://www.nngroup.com/articles/color-enhance-design/) by Kelley Gordon at NN/g. This rule says that our dominant color should take up about 60% of our page, a secondary color should take up 30%, and 10% should be an accent color. If you look at my pages, pictured above, you will see that the primary color, a darkish red (138,0,0), does in fact take up the majority of the screen. The color appears in the form of a movie theater curtain, which after all is my underlying theme for the entire website. I wanted to choose colors, and fonts for that matter, that reflect the emotions of actually going to a movie theater. In which, the general appearance is rather dark, with a few splashes of color, with red being my splash of color. Other than this red I utilize a series of darker colors to invoke the dark atmosphere, using a navy blue (19, 2, 75) as my secondary color, and both white and black acting as accent colors. Together, this color combination could be best described as similar to a triad color scheme or even a split complementary with a few colors missing, but in reality, it is actually a custom color scheme that I feel plays well together and captures the feeling I aim to achieve.
+  
+![ColorScheme](https://user-images.githubusercontent.com/96221850/222372114-102bc66b-4f42-4ddc-ba16-6b902d944783.png)
+
+## Typography
+
+ This week's module, Module 6, along with the importance of color schemes, discussed the importance of typography. Up to this point, I did not think much about it to be honest. Growing up we are taught to simply use the default settings with programs like Word and other text documents, therefore, it was nothing that I paid much attention to. But after reading the article ['Typography in ten minutes'](https://practicaltypography.com/typography-in-ten-minutes.html) by Matthew Butterick, I realized how boring and unoriginal it is to simply use default fonts when designing a website. Therefore, after doing a bit of research I have decided on a couple of different fonts that I find to be quite appealing. Not only do they look a bit classy and even elegant, but they are fonts that are easy to read for all sorts of users, invoking a feeling of relaxation. The two major fonts that I will be using are Garamond and Georgia, both serif fonts. Both seem to capture the feeling that I am aiming for with my website. I want to capture a feeling of excitement and eagerness, with a bit of class, but yet allow users to feel comfortable and relaxed, much like a trip to the movie theater. I know this is a lot to expect out of a font, but I think Garamond and Georgia do an excellent job of capturing what it is I am looking for. I will use Garamond for the majority of my website, including throughout my main, for headers, and for more. I will use Georgia, just for vairety and perhaps to highlight specific words of sections. I will also make sure to utilize typography tricks gathered from the article such as appropriate font size and appropriate spacing throughout, all with the goal of providing the best user experience possible and capturing the feelings I wish to capture throughout my website.
+ 
+ ![Typograhpy](https://user-images.githubusercontent.com/96221850/222376766-7eaae68c-212c-4543-8534-011e9d826b77.png)
+
+ 
