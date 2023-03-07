@@ -75,6 +75,10 @@ express()
       import('node-fetch')
       .then(res => res.json())
       .then(data => console.log(data));
+
+      //other method
+      //const movieAPI = await axios.get()
+      //res.render('', {movies: movieAPI.dta})
     } catch (err) {
 
     } 
