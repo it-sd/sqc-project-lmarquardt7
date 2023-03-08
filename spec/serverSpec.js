@@ -51,4 +51,5 @@ describe('server', function () {
       const results = await response.json()
       expect(results.ok).toBeTrue()
     })
+  })
 })

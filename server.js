@@ -3,7 +3,7 @@ const express = require('express')
 const path = require('path')
 // const fetch = require('node-fetch')
 // import fetch from 'node-fetch'
-//import('node-fetch')
+// import('node-fetch')
 const PORT = process.env.PORT || 5163
 
 const { Pool } = require('pg')
@@ -68,21 +68,20 @@ express()
   .post('/search', (req, res) => {
     const title = req.body.title
     const apiKey = process.env.OMDb_API_KEY
-    const url_api = `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
+    const urlApi = `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
 
     try {
-      fetch(url_api, {method: 'Get'})
+      fetch(urlApi, { method: 'Get' })
       import('node-fetch')
-      .then(res => res.json())
-      .then(data => console.log(data));
+        .then(res => res.json())
+        .then(data => console.log(data))
 
-      //other method
-      //const movieAPI = await axios.get()
-      //res.render('', {movies: movieAPI.dta})
+      // other method
+      // const movieAPI = await axios.get()
+      // res.render('', {movies: movieAPI.dta})
     } catch (err) {
 
-    } 
- 
+    }
   })
 
   .get('/login', (req, res) => {
@@ -106,9 +105,10 @@ express()
 
       // const insertSql = 'INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES (' + username + ', ' + password + ', ' + firstName + ', ' + lastName + ', ' + region + ');'
 
-      const insertSql = `INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES ($1::TEXT, $2::TEXT, $3::TEXT, $4::TEXT, $5::TEXT);`
+      const insertSql = "INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES('" + username + "', '" + password + "', '" + firstName + "', '" + lastName + "', '" + region + "');"
 
-      console.log(insertSql, [username, password, firstName, lastName, region])
+      // console.log(insertSql, [username, password, firstName, lastName, region])
+      // INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES('test2', 'password3', 'Paul', 'Smith', 1);
       await client.query(insertSql)
 
       res.json({ ok: true })

@@ -59,7 +59,7 @@ const submit = async function () {
   if (response.ok) {
     const result = await response.json()
     if (result.ok) {
-      main.innerHTML = '<h1>Success!</h1>'
+      main.innerHTML = `<h1>Success! Thank you for creating a profile, ${first}!</h1>`
       return
     }
   }
