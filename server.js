@@ -89,12 +89,10 @@ express()
   })
 
   .post('/user', async function (req, res) {
-    // Your code here //////////////////////////////////////
     res.set({ 'Content-Type': 'application/json' })
 
     try {
-      // This is where we will eventually, I assume, save password to database
-      // send back success true if try works
+      // add validations
       const client = await pool.connect()
 
       const username = req.body.username
@@ -103,23 +101,18 @@ express()
       const lastName = req.body.lastName
       const region = 1
 
-      // const insertSql = 'INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES (' + username + ', ' + password + ', ' + firstName + ', ' + lastName + ', ' + region + ');'
-
       const insertSql = "INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES('" + username + "', '" + password + "', '" + firstName + "', '" + lastName + "', '" + region + "');"
 
-      // console.log(insertSql, [username, password, firstName, lastName, region])
       // INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES('test2', 'password3', 'Paul', 'Smith', 1);
       await client.query(insertSql)
 
       res.json({ ok: true })
       client.release()
     } catch (error) {
-      // send back success false if catch runs
 
       console.error('Invalid Entry')
       res.status(400).json({ ok: false })
     }
-    // End of your code ////////////////////////////////////
   })
 
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
