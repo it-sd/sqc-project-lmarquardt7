@@ -1,0 +1,72 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Welcome to Stream Theater's Add Favorites Page</h2>
+      <div id="addFavForm">
+      
+          <h3 id="addFav-header">Add To My Favorites</h3>
+
+        <form id="addFav-form">
+          <input type="text" name="username" id="username-field" class="addFav-form-field" placeholder="Username">
+          <input type="password" name="password" id="password-field" class="addFav-form-field" placeholder="Password">
+          <input type="text" name="movieName" id="movieName-field" class="addFav-form-field" placeholder="Movie Name">
+          <input type="text" name="movieDescription" id="movieDescription-field" class="addFav-form-field" placeholder="Brief Description">
+          <input type="text" name="serviceName" id="serviceName-field" class="addFav-form-field" placeholder="Streaming Service">
+          <input type="submit" value="Add" id="addFav-form-submit">
+        </form>
+    </div>
+    <%- include('../shared/footer.ejs') %>
+  </main>
+  <script>
+        
+      const main = document.querySelector('main')
+      
+      const username = document.getElementById('username-field')
+      const password = document.getElementById('password-field')
+      const movieName = document.getElementById('movieName-field')
+      const movieDescription = document.getElementById('movieDescription-field')
+      const serviceName = document.getElementById('serviceName-field')
+      const submitButton = document.getElementById('addFav-form-submit')
+          
+const submit = async function () {
+
+
+  main.innerHTML = '<h1>Please wait</h1>'
+
+  
+  const user = username.value
+  const pass = password.value
+  const movie = movieName.value
+  const description = movieDescription.value
+  const service = serviceName.value
+
+  const data = {
+    username: user,
+    password: pass,
+    movieName: movie,
+    movieDescription: description,
+    serviceName: service
+  }
+  
+    const response = await fetch('/AddToFav', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if (response.ok) {
+    const result = await response.json()
+    if (result.ok) {
+      main.innerHTML = `<h1>Success! The movie '${movie}' has been added to your favorites!<br>Thank You, ${user}!</h1>`
+      return
+    }
+  }
+
+  main.innerHTML = '<h1>Server error</h1>'
+
+// End of your code ////////////////////////////////////////
+}
+submitButton.addEventListener('click', (e) => submit())
+  </script>

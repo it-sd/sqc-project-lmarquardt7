@@ -38,6 +38,16 @@ const queryAllMovies = async function () {
   return { movies: results }
 }
 
+const queryUserFavorites = async function (username, password) {
+  //const sql = "SELECT * FROM favorites WHERE user_username = '" + req.body.username + "' AND user_password = '" + req.body.password + "';"
+  const sql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "';"
+
+  console.log(sql)
+
+  const results = await query(sql)
+  return { favorites: results }
+}
+
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .use(express.json())
@@ -109,12 +119,94 @@ express()
       res.json({ ok: true })
       client.release()
     } catch (error) {
+      console.error('Invalid Entry')
+      res.status(400).json({ ok: false })
+    }
+  })
+  .get('/AddFavs', (req, res) => {
+    res.render('pages/AddFavs')
+  })
+  .post('/AddToFav', async function (req, res) {
+    res.set({ 'Content-Type': 'application/json' })
 
+    try {
+      // add validations
+      const client = await pool.connect()
+
+      const username = req.body.username
+      const password = req.body.password
+      const movieName = req.body.movieName
+      const movieDescription = req.body.movieDescription
+      const serviceName = req.body.serviceName
+
+      const insertFavsSql = "INSERT INTO favorites (user_username, user_password, movie_name, movie_description, service_name) VALUES('" + username + "', '" + password + "', '" + movieName + "', '" + movieDescription + "', '" + serviceName + "');"
+
+      await client.query(insertFavsSql)
+
+      res.json({ ok: true })
+      client.release()
+    } catch (error) {
+      console.error('Invalid Entry')
+      res.status(400).json({ ok: false })
+    }
+  })
+  /*
+  .get('/favorites', (req, res) => {
+    res.render('pages/favorites')
+  })
+  */
+  .get('/favorites', async function (req, res) {
+    //const client = await pool.connect()
+
+    const username = req.body.username
+    const password = req.body.password
+
+
+    const favorites = await queryUserFavorites(username, password)
+    res.render('pages/favorites', favorites)
+  })
+  
+
+  
+  /*
+  .get('/SearchFavs', async function (req, res){
+
+    const client = await pool.connect()
+
+    const username = req.body.username
+    const password = req.body.password
+
+    const searchFavsSql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "`;"
+
+    const userFavorites = await client.query(searchFavsSql)
+
+    res.render('pages/favorites', userFavorites)
+  })
+  
+ 
+  .get('/SearchFavs', async function (req, res) {
+    res.set({ 'Content-Type': 'application/json' })
+
+    try {
+      // add validations
+      const client = await pool.connect()
+
+      const username = req.body.username
+      const password = req.body.password
+
+      const searchFavsSql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "`;"
+
+      await client.query(searchFavsSql)
+
+      res.json({ ok: true })
+      client.release()
+    } catch (error) {
       console.error('Invalid Entry')
       res.status(400).json({ ok: false })
     }
   })
 
+*/
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 module.exports = {

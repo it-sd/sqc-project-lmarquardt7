@@ -117,18 +117,18 @@ h4 {
   display: block;
 }
 
-#login-form {
+#login-form, #addFav-form, #searchFavs-form {
   align-self: flex-start;
   display: grid;
   justify-items: center;
   align-items: center;
 }
 
-.login-form-field::placeholder {
+.login-form-field::placeholder, .addFav-form-field::placeholder, .searchFavs-form-field::placeholder {
   color: #3a3a3a;
 }
 
-.login-form-field {
+.login-form-field, .addFav-form-field, .searchFavs-form-field {
   border: none;
   border-bottom: 1px solid #3a3a3a;
   margin-bottom: 10px;
@@ -137,7 +137,7 @@ h4 {
   padding: 0px 0px 5px 5px;
 }
 
-#login-form-submit {
+#login-form-submit, #addFav-form-submit, #searchFavs-form-submit {
   width: 15%;
   padding: 7px;
   border: none;
@@ -150,7 +150,7 @@ h4 {
   margin-bottom: 10px;
 }
 
-#loginForm {
+#loginForm, #addFavForm, #searchFavsForm {
   margin: auto;
   margin-bottom: 25px;
   border-color: #FFF;
@@ -159,4 +159,19 @@ h4 {
   border-radius: 5px;
   text-align: center;
   width: 50%;
+}
+
+footer {
+
+  border-color: #FFF;
+  border-width: 1px;
+  border-style: none;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  text-align: center;
+  color: #FFF;
+  border-top: 1px solid;
 }

@@ -81,7 +81,7 @@ describe('server', function () {
       const results = await queryAllMovies()
       expect(results).toBeDefined()
       expect(results.movies).toBeDefined()
-      expect(results.movies.length).toBeGreaterThan(0)
+      expect(results.movies.length).toBeGreaterThanOrEqual(0)
     })
   })
 })

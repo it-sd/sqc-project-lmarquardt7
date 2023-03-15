@@ -1,0 +1,65 @@
+<%- include('../shared/header.ejs') %>
+  <main>
+    <h2>Welcome to Stream Theater's View Favorites Page</h2> 
+    <div id="searchFavsForm">
+      
+          <h3 id="searchFavs-header">View Your Favorites</h3>
+
+        <form id="searchFavs-form">
+          <input type="text" name="username" id="username-field" class="searchFavs-form-field" placeholder="Username">
+          <input type="password" name="password" id="password-field" class="searchFavs-form-field" placeholder="Password">
+          <input type="submit" value="Login" id="searchFavs-form-submit">
+        </form>
+    </div>
+    <%- include('../shared/footer.ejs') %>
+  </main>
+  <script>
+
+    
+    const main = document.querySelector('main')
+    const username = document.getElementById('username-field')
+    const password = document.getElementById('password-field')
+
+    const submitButton = document.getElementById('searchFavs-form-submit')
+          
+    const submit = async function () {
+
+
+      main.innerHTML = '<h1>Please wait</h1>'
+
+
+      const user = username.value
+      const pass = password.value
+
+      const data = {
+        username: user,
+        password: pass,
+      }
+
+        const response = await fetch('/SearchFavs', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+
+
+         
+         main.innerHTML = `<h3>Your Movies</h3><div><table><tr><th>Movie Title</th><th>Description</th><th>Where to Watch</th></tr><%_ for (const favorite of favorites) { _%><tr><td><%= favorite.movie_name %></td><td><%= favorite.movie_description %></td><td><%= favorite.service_name %></td></tr><%_ } _%></table></div>`
+
+    
+
+// End of your code ////////////////////////////////////////
+}
+submitButton.addEventListener('click', (e) => submit())
+      
+      
+      
+      
+      
+      
+     
+      
+  </script>

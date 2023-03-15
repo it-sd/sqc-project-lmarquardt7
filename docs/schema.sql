@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS actors;
 DROP TABLE IF EXISTS services_movies;
 DROP TABLE IF EXISTS streaming_services;
 DROP TABLE IF EXISTS regions;
+DROP TABLE IF EXISTS favorites;
 
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
@@ -60,4 +61,13 @@ CREATE TABLE regions (
   region_id SERIAL PRIMARY KEY,
   region_name TEXT NOT NULL,
   region_description TEXT NOT NULL
+);
+
+CREATE TABLE favorites(
+  favorite_id SERIAL PRIMARY KEY,
+  user_username TEXT NOT NULL,
+  user_password TEXT NOT NULL,
+  movie_name TEXT NOT NULL,
+  movie_description TEXT NOT NULL,
+  service_name TEXT NOT NULL
 );
