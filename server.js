@@ -86,16 +86,21 @@ express()
     const urlApi = `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
 
 
-    /*
     const response = await fetch(url, {
-      method: 'POST',
+      method: 'GET',
       headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-        'X-Accept': 'application/json'
+        // 'Content-Type': 'application/json; charset=UTF-8',
+        // 'X-Accept': 'application/json'
       }
     })
 
+    console.log(response)
+    res.json({ ok: true })
+    client.release()
+ 
 
+
+    /*
     try {
       fetch(urlApi, { method: 'Get' })
         .then(res => res.json())
@@ -105,11 +110,6 @@ express()
     } catch (err) {
 
     }
-
-
-
-    
-        
     fetch(urlApi)
         .then(function(response){
         return response.json()
