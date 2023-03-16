@@ -3,9 +3,11 @@ body {
   background-color: #000;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: Garamond, Georgia;
 }
 
 header {
+  font-family: Garamond, Georgia;
   height: 200px;
   margin-right: auto;
   margin-left: auto;
@@ -15,6 +17,7 @@ header {
 
 header h1 {
     margin-left: 3.75em;
+    font-family: Garamond, Georgia;
     font-size: 70px;
     color: antiquewhite;
 }
@@ -26,7 +29,7 @@ main {
   border-color: #FFF;
   border-radius: 5px 5px 0 0;
   color: #FFF;
-  font-family: Helvetica, sans-serif;
+  font-family: Garamond, Georgia;
   margin: 10px auto;
   width: 1090px;
   
@@ -35,6 +38,7 @@ main {
 h2{
     margin: 2em;
     width: 100%;
+    font-family: Garamond, Georgia;
 }
 
  p {
@@ -46,11 +50,14 @@ h2{
 nav {
   margin: 10px auto;
   width: 1090px;
+  font-family: Garamond, Georgia;
   
 }
 
 nav ul li a {
   margin: 10px 1px;
+  font-family: Garamond, Georgia;
+  font-size: 22px;
 }
 
 ul {
@@ -117,18 +124,18 @@ h4 {
   display: block;
 }
 
-#login-form, #addFav-form, #searchFavs-form {
+#login-form, #addFav-form, #searchFavs-form, #search-form {
   align-self: flex-start;
   display: grid;
   justify-items: center;
   align-items: center;
 }
 
-.login-form-field::placeholder, .addFav-form-field::placeholder, .searchFavs-form-field::placeholder {
+.login-form-field::placeholder, .addFav-form-field::placeholder, .searchFavs-form-field::placeholder, .search-form-field {
   color: #3a3a3a;
 }
 
-.login-form-field, .addFav-form-field, .searchFavs-form-field {
+.login-form-field, .addFav-form-field, .searchFavs-form-field, .search-form-field {
   border: none;
   border-bottom: 1px solid #3a3a3a;
   margin-bottom: 10px;
@@ -137,7 +144,7 @@ h4 {
   padding: 0px 0px 5px 5px;
 }
 
-#login-form-submit, #addFav-form-submit, #searchFavs-form-submit {
+#login-form-submit, #addFav-form-submit, #searchFavs-form-submit, #search-form-submit {
   width: 15%;
   padding: 7px;
   border: none;
@@ -150,7 +157,7 @@ h4 {
   margin-bottom: 10px;
 }
 
-#loginForm, #addFavForm, #searchFavsForm {
+#loginForm, #addFavForm, #searchFavsForm, #searchForm {
   margin: auto;
   margin-bottom: 25px;
   border-color: #FFF;
@@ -161,7 +168,7 @@ h4 {
   width: 50%;
 }
 
-footer {
+footer, #displayResults {
 
   border-color: #FFF;
   border-width: 1px;
@@ -175,3 +182,34 @@ footer {
   color: #FFF;
   border-top: 1px solid;
 }
+
+table, th, td {
+  border:1px solid black;
+  border-color: white;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+h3 {
+    text-align: center;
+}
+
+img {
+    border: solid;
+    border-color: #fff;
+    margin: 10px;
+}
+
+#Service {
+    margin-left: 100px;
+}
+
+#HowToUse {
+    font-size: 20px;
+}
+
+#Recommended {
+    margin-left: 45px;
+}
+

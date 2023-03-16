@@ -1,10 +1,27 @@
 <%- include('../shared/header.ejs') %>
   <main>
-    <h2>Index of movies</h2>
-    <ol>
+    <h2>Movie Directory</h2>
+    <table>
+        <tr>
+            <th>Movie Id</th>
+            <th>Movie Name</th>
+            <th>Genre</th>
+            <th>Year</th>
+            <th>Plot</th>
+            <th>RunTime</th>
+            <th>Rating</th>
+        </tr>
     <%_ for (const movie of movies) { _%>
-      <li><a href="/<%= movie.movie_id %>"><%= movie.movie_name %></a></li> 
+        <tr>
+            <td><%= movie.movie_id %></td>
+            <td><%= movie.movie_name %></td>
+            <td><%= movie.movie_genre %></td>
+            <td><%= movie.movie_year %></td>
+            <td><%= movie.movie_plot %></td>
+            <td><%= movie.movie_runtime_minutes %></td>
+            <td><%= movie.movie_rating %></td>
+        </tr>
     <%_ } _%>
-    </ol>
+    </table>
     <%- include('../shared/footer.ejs') %>  
   </main>

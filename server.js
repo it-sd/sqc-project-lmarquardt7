@@ -40,8 +40,9 @@ const queryAllMovies = async function () {
 
 const queryUserFavorites = async function (username, password) {
   //const sql = "SELECT * FROM favorites WHERE user_username = '" + req.body.username + "' AND user_password = '" + req.body.password + "';"
-  const sql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "';"
+  // const sql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "';"
 
+  const sql = "SELECT * FROM favorites"
   console.log(sql)
 
   const results = await query(sql)
@@ -75,24 +76,61 @@ express()
   .get('/search', (req, res) => {
     res.render('pages/search')
   })
-  .post('/search', (req, res) => {
+
+
+
+  .get('/searchTitle', async function (req, res) {
     const title = req.body.title
     const apiKey = process.env.OMDb_API_KEY
+    const apiKey2 = process.env.WATCHMODE_API_KEY
     const urlApi = `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
+
+
+    /*
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'X-Accept': 'application/json'
+      }
+    })
+
 
     try {
       fetch(urlApi, { method: 'Get' })
-      import('node-fetch')
         .then(res => res.json())
         .then(data => console.log(data))
 
-      // other method
-      // const movieAPI = await axios.get()
-      // res.render('', {movies: movieAPI.dta})
+
     } catch (err) {
 
     }
+
+
+
+    
+        
+    fetch(urlApi)
+        .then(function(response){
+        return response.json()
+    })
+        .then(function (data) {
+        console.log('the data', data)
+        
+    })
+
+    */
+
+
+
+
   })
+
+
+
+
+
+
 
   .get('/login', (req, res) => {
     res.render('pages/login')
@@ -150,6 +188,18 @@ express()
       res.status(400).json({ ok: false })
     }
   })
+
+
+
+
+
+
+
+
+
+
+
+
   /*
   .get('/favorites', (req, res) => {
     res.render('pages/favorites')

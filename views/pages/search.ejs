@@ -1,102 +1,62 @@
 <%- include('../shared/header.ejs') %>
   <main>
     <h2>Welcome to Stream Theater's Search Page</h2>
+      
+      <div id="searchForm">
+      
+          <h3 id="search-header">Search for Movies by Title</h3>
 
-       <div class="searchDiv">
-            <form class="searchForm" id="search-by-title" onsubmit="return false;">
-            <fieldset>
-                <legend>By Title</legend>
-                <div>
-                    
-                    <label class="control-label" for="t">Title:</label>
-                    <input type="text" id="t" name="t" class="input-small">
-                    
-                    <label class="control-label" for="y">Year:</label>
-                    <input type="text" id="y" name="y" class="input-small" style="width: 100px;">
-                    
-                    <label class="control-label">Plot:</label>
-                    <select name="plot" style="width: 100px;">
-                        <option value="" selected="">Short</option>
-                        <option value="full">Full</option>
-                    </select>
-                    <button id="search-by-title-button" type="button" class="btn-sm btn-primary">Search</button>
-                    <button id="search-by-title-reset" type="reset" class="btn-sm">Reset</button>
-                </div>
-                <div class="hide" id="search-by-title-request">
-                    <br />
-                </div>
-                <div id="search-by-title-progress" class="hide progress progress-info progress-striped active">
-                    <div class="progress-bar" style="width: 100%;">
-                    </div>
-                </div>
-                <div id="results">
-                    <p>Results:</p>
-                    <pre class="alert alert-success" style="margin-bottom: 0px; white-space: normal;"></pre>
-                    <div id="displayResults">
-                        <h1>Results displayed here!</h1>
-                    </div>
-                </div>
-            </fieldset>
-            </form>
-        </div>
+        <form id="search-form">
+          <input type="text" name="title" id="title-field" class="search-form-field" placeholder="Movie Title">
+
+          <input type="submit" value="Search" id="search-form-submit">
+        </form>
+    </div>
+    <div id="displayResults">
+      <h3>Results go here!</h3>
+    </div>
         <%- include('../shared/footer.ejs') %>
     </main>
     <script>
-        
-        /*
-        const fetch = require('node-fetch');
-
-        let url = 'https://api.watchmode.com/v1/search/?apiKey=BKrbOhwMounsJ1t1G4n1uTnPKRJezYCPbwqWv7FR&search_field=name&search_value=Hackers';
-
-        fetch(url, { method: 'Get' })
-            .then((res) => res.json())
-            .then((json) => {
-            console.log(json);
-        });
-        */
-        
-       
-    
-        
+ 
         const resultsDisplay = document.getElementById('displayResults')
-        const title = document.getElementById('t')
+        const title = document.getElementById('title-field')
+        const submitButton = document.getElementById('search-form-submit')
         
         
         const submit = async function () {
 
-
           resultsDisplay.innerHTML = '<h1>Searching...</h1>'
-
-          // password already validated on client side
           
 
           const data = {
             title: title.value 
           }
 
-          const response = await fetch('/search', {
-            method: 'GET',
+          const response = await fetch('/searchTitle', {
+            method: 'POST',
             headers: {
               Accept: 'application/json',
               'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
           })
+          
+          
 
           if (response.ok) {
             const result = await response.json()
             if (result.ok) {
-              //main.innerHTML = 
+              resultsDisplay.innerHTML = 'Results found'
               return
             }
           }
 
-          main.innerHTML = '<h1>Connection Error</h1>'
-
+          resultsDisplay.innerHTML = '<h1>Connection Error</h1>'
         
         }
         
-        register.addEventListener('click', (e) => submit())
+        submitButton.addEventListener('click', (e) => submit())
 
     
 
