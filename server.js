@@ -79,14 +79,14 @@ express()
 
 
 
-  .get('/searchTitle', async function (req, res) {
+  .post('/searchTitle', async function (req, res) {
     const title = req.body.title
     const apiKey = process.env.OMDb_API_KEY
     const apiKey2 = process.env.WATCHMODE_API_KEY
     const urlApi = `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
 
 
-    const response = await fetch(url, {
+    const response = await fetch(urlApi, {
       method: 'GET',
       headers: {
         // 'Content-Type': 'application/json; charset=UTF-8',
