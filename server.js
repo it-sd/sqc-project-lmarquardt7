@@ -88,41 +88,18 @@ express()
 
     const response = await fetch(urlApi, {
       method: 'GET',
-      headers: {
-        // 'Content-Type': 'application/json; charset=UTF-8',
-        // 'X-Accept': 'application/json'
-      }
+      headers: {}
     })
 
-    console.log(response)
-    res.json({ ok: true })
-    client.release()
+    const result = await response.json()
+
+    console.log(result)
+
+    res.json({ Title: result.Title, Year: result.Year, Rated: result.Rated, Runtime: result.Runtime, Genre: result.Genre, Director: result.Director, Actors: result.Actors , Plot: result.Plot})
+
+
+    
  
-
-
-    /*
-    try {
-      fetch(urlApi, { method: 'Get' })
-        .then(res => res.json())
-        .then(data => console.log(data))
-
-
-    } catch (err) {
-
-    }
-    fetch(urlApi)
-        .then(function(response){
-        return response.json()
-    })
-        .then(function (data) {
-        console.log('the data', data)
-        
-    })
-
-    */
-
-
-
 
   })
 
