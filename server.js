@@ -61,9 +61,9 @@ express()
     res.render('pages/about')
   })
   .get('/health', async function (req, res) {
-    const movies = await queryAllMovies() // Forgot () for function
+    const movies = await queryAllMovies()
     if (movies != null) {
-      res.status(200).send('healthy') // Changed Healthy to healthy
+      res.status(200).send('healthy')
     } else {
       res.status(500).send('Database connection has failed')
     }
@@ -234,4 +234,4 @@ module.exports = {
   query,
   queryAllMovies,
   queryUserFavorites
-} // function names
+}
