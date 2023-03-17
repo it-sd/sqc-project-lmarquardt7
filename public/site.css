@@ -213,3 +213,10 @@ img {
     margin-left: 45px;
 }
 
+#searchHeader {
+    margin-left: -10px; 
+}
+
+#serviceResult {
+    font-size: 30px;
+}

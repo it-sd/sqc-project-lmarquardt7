@@ -1,13 +1,13 @@
 <%- include('../shared/header.ejs') %>
   <main>
-    <h2>Welcome to Stream Theater's Search Page</h2>
+    <h2>Welcome to Stream Theater's Services Page</h2>
       
       <div id="searchForm">
       
-          <h3 id="search-header">Search for Movies by Title</h3>
+          <h3 id="search-header">Search to See Where You Can Watch Your Movie!</h3>
 
         <div id="search-form">
-          <input type="text" name="title" id="title-field" class="search-form-field" placeholder="Movie Title">
+          <input type="text" name="id" id="id-field" class="search-form-field" placeholder="Movie's ID">
 
             <button id="search-form-submit">Search</button>
         </div>
@@ -20,7 +20,7 @@
     <script>
  
         const resultsDisplay = document.getElementById('displayResults')
-        const title = document.getElementById('title-field')
+        const id = document.getElementById('id-field')
         const submitButton = document.getElementById('search-form-submit')
         
         
@@ -30,10 +30,10 @@
           
 
           const data = {
-            title: title.value 
+            id: id.value 
           }
 
-          const response = await fetch('/searchTitle', {
+          const response = await fetch('/searchServices', {
             method: 'POST',
             headers: {
               Accept: 'application/json',
@@ -44,8 +44,9 @@
           
           if (response.ok) {
             const result = await response.json()
-            if (result.imdbID && result.Title && result.Year && result.Rated && result.Runtime && result.Genre && result.Director && result.Actors && result.Plot) {
-              resultsDisplay.innerHTML = `<div id="results"><h2 id="searchHeader">Your Search Results</h2><h4>**Copy down the ID to use it to search for what services you can watch your movie on!</h4><table><tr><th>ID</th><th>Title</th><th>Year</th><th>Rated</th><th>Runtime</th><th>Genre</th><th>Director</th><th>Actors</th><th>Plot</th></tr><tr><td>${result.imdbID}</td><td>${result.Title}</td><td>${result.Year}</td><td>${result.Rated}</td><td>${result.Runtime}</td><td>${result.Genre}</td><td>${result.Director}</td><td>${result.Actors}</td><td>${result.Plot}</td></tr></table></div>`
+            if (result.name1 && result.name2 && result.name3) {
+                
+              resultsDisplay.innerHTML = `<div id="serviceResult"> The top 3 Streaming Services to watch your movie are: <br> 1. ${result.name1} <br> 2. ${result.name2}<br> 3.${result.name3}`
               return
             }
           }
