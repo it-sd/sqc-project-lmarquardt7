@@ -36,13 +36,6 @@
         main.innerHTML = `<h3>Audience Favorites</h3><div><table><tr><th>Username</th><th>Movie Title</th><th>Description</th><th>Where to Watch</th></tr><%_ for (const favorite of favorites) { _%><tr><td><%= favorite.user_username %></td><td><%= favorite.movie_name %></td><td><%= favorite.movie_description %></td><td><%= favorite.service_name %></td></tr><%_ } _%></table></div>`     
       }
     
-
-
-         
-
-
-    
-
 // End of your code ////////////////////////////////////////
 }
 submitButton.addEventListener('click', (e) => submit())
