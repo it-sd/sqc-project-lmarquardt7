@@ -94,6 +94,24 @@ describe('server', function () {
       const results = await response.json()
       expect(results.ok).toBeTrue()
     })
+    it('should reject invalid user information', async function () {
+      const data = {
+        username: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        region: 1
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      expect(response.ok).toBeFalse()
+    })
   })
   describe("POST '/searchTitle'", function () {
     const url = new URL('/searchTitle', baseUrl)

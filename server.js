@@ -39,9 +39,6 @@ const queryAllMovies = async function () {
 }
 
 const queryUserFavorites = async function () {
-  // const sql = "SELECT * FROM favorites WHERE user_username = '" + req.body.username + "' AND user_password = '" + req.body.password + "';"
-  // const sql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "';"
-
   const sql = 'SELECT * FROM favorites;'
 
   const results = await query(sql)
@@ -170,64 +167,11 @@ express()
       res.status(400).json({ ok: false })
     }
   })
-  /*
-  .get('/favorites', (req, res) => {
-    res.render('pages/favorites')
-  })
-  */
   .get('/favorites', async function (req, res) {
-    // const client = await pool.connect()
-
-    const username = req.body.username
-    const password = req.body.password
-
-    if (username === null || username === '' || password === null || password === '') {
-      res.status(400).send('Make sure to fill in all information. Thank You!')
-      res.end()
-    } else {
-      const favorites = await queryUserFavorites(username, password)
-      res.render('pages/favorites', favorites)
-    }
+    const favorites = await queryUserFavorites()
+    res.render('pages/favorites', favorites)
   })
 
-  /*
-  .get('/SearchFavs', async function (req, res){
-
-    const client = await pool.connect()
-
-    const username = req.body.username
-    const password = req.body.password
-
-    const searchFavsSql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "`;"
-
-    const userFavorites = await client.query(searchFavsSql)
-
-    res.render('pages/favorites', userFavorites)
-  })
-
-  .get('/SearchFavs', async function (req, res) {
-    res.set({ 'Content-Type': 'application/json' })
-
-    try {
-      // add validations
-      const client = await pool.connect()
-
-      const username = req.body.username
-      const password = req.body.password
-
-      const searchFavsSql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "`;"
-
-      await client.query(searchFavsSql)
-
-      res.json({ ok: true })
-      client.release()
-    } catch (error) {
-      console.error('Invalid Entry')
-      res.status(400).json({ ok: false })
-    }
-  })
-
-*/
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 module.exports = {

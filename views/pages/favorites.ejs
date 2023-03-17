@@ -5,11 +5,11 @@
       
           <h3 id="searchFavs-header">View Audience Favorites</h3>
 
-        <form id="searchFavs-form">
+        <div id="searchFavs-form">
           <input type="text" name="username" id="username-field" class="searchFavs-form-field" placeholder="Username">
           <input type="password" name="password" id="password-field" class="searchFavs-form-field" placeholder="Password">
-          <input type="submit" value="Login" id="searchFavs-form-submit">
-        </form>
+            <button id="searchFavs-form-submit">View All</button>
+        </div>
     </div>
     <%- include('../shared/footer.ejs') %>
   </main>
@@ -26,28 +26,20 @@
 
 
       main.innerHTML = '<h1>Please wait</h1>'
-
-
-      const user = username.value
-      const pass = password.value
-
-      const data = {
-        username: user,
-        password: pass,
+        
+        console.log(username)
+        
+        
+      if(username.value === null || username.value === '' || password.value === null || password.value === ''){
+          main.innerHTML = `<h3>Please be sure to enter username and password to view Audience Favorites</h3>`
+      } else {
+        main.innerHTML = `<h3>Audience Favorites</h3><div><table><tr><th>Username</th><th>Movie Title</th><th>Description</th><th>Where to Watch</th></tr><%_ for (const favorite of favorites) { _%><tr><td><%= favorite.user_username %></td><td><%= favorite.movie_name %></td><td><%= favorite.movie_description %></td><td><%= favorite.service_name %></td></tr><%_ } _%></table></div>`     
       }
-
-        const response = await fetch('/SearchFavs', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
+    
 
 
          
-         main.innerHTML = `<h3>Audience Favorites</h3><div><table><tr><th>Username</th><th>Movie Title</th><th>Description</th><th>Where to Watch</th></tr><%_ for (const favorite of favorites) { _%><tr><td><%= favorite.user_username %></td><td><%= favorite.movie_name %></td><td><%= favorite.movie_description %></td><td><%= favorite.service_name %></td></tr><%_ } _%></table></div>`
+
 
     
 
