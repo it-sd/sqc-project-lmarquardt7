@@ -43,7 +43,6 @@ const queryUserFavorites = async function (username, password) {
   // const sql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "';"
 
   const sql = 'SELECT * FROM favorites;'
-  console.log(sql)
 
   const results = await query(sql)
   return { favorites: results }
@@ -116,7 +115,6 @@ express()
     res.set({ 'Content-Type': 'application/json' })
 
     try {
-      // add validations
       const client = await pool.connect()
 
       const username = req.body.username
@@ -125,12 +123,17 @@ express()
       const lastName = req.body.lastName
       const region = 1
 
-      const insertSql = "INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES('" + username + "', '" + password + "', '" + firstName + "', '" + lastName + "', '" + region + "');"
+      if (username === null || username === '' || password === null || password === '' || firstName === null || firstName === '' || lastName === null || lastName === '') {
+        res.status(400).send('Make sure to fill in all information. Thank You!')
+        res.end()
+      } else {
+        const insertSql = "INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES('" + username + "', '" + password + "', '" + firstName + "', '" + lastName + "', '" + region + "');"
 
-      await client.query(insertSql)
+        await client.query(insertSql)
 
-      res.json({ ok: true })
-      client.release()
+        res.json({ ok: true })
+        client.release()
+      }
     } catch (error) {
       console.error('Invalid Entry')
       res.status(400).json({ ok: false })
@@ -143,7 +146,6 @@ express()
     res.set({ 'Content-Type': 'application/json' })
 
     try {
-      // add validations
       const client = await pool.connect()
 
       const username = req.body.username
@@ -152,12 +154,17 @@ express()
       const movieDescription = req.body.movieDescription
       const serviceName = req.body.serviceName
 
-      const insertFavsSql = "INSERT INTO favorites (user_username, user_password, movie_name, movie_description, service_name) VALUES('" + username + "', '" + password + "', '" + movieName + "', '" + movieDescription + "', '" + serviceName + "');"
+      if (username === null || username === '' || password === null || password === '' || movieName === null || movieName === '' || movieDescription === null || movieDescription === '' || serviceName === null || serviceName === '') {
+        res.status(400).send('Make sure to fill in all information. Thank You!')
+        res.end()
+      } else {
+        const insertFavsSql = "INSERT INTO favorites (user_username, user_password, movie_name, movie_description, service_name) VALUES('" + username + "', '" + password + "', '" + movieName + "', '" + movieDescription + "', '" + serviceName + "');"
 
-      await client.query(insertFavsSql)
+        await client.query(insertFavsSql)
 
-      res.json({ ok: true })
-      client.release()
+        res.json({ ok: true })
+        client.release()
+      }
     } catch (error) {
       console.error('Invalid Entry')
       res.status(400).json({ ok: false })
@@ -174,8 +181,13 @@ express()
     const username = req.body.username
     const password = req.body.password
 
-    const favorites = await queryUserFavorites(username, password)
-    res.render('pages/favorites', favorites)
+    if (username === null || username === '' || password === null || password === '') {
+      res.status(400).send('Make sure to fill in all information. Thank You!')
+      res.end()
+    } else {
+      const favorites = await queryUserFavorites(username, password)
+      res.render('pages/favorites', favorites)
+    }
   })
 
   /*
