@@ -1,9 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const path = require('path')
-// const fetch = require('node-fetch')
-// import fetch from 'node-fetch'
-// import('node-fetch')
+
 const PORT = process.env.PORT || 5163
 
 const { Pool } = require('pg')
