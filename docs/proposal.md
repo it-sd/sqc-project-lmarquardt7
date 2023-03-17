@@ -29,5 +29,10 @@ My plan for database use includes a 'Users' table, 'Movies' table, and a 'Servic
 
 Initial design
 -------------
-- [Layout](./layout.svg)
-- [Site map](./sitemap.svg)
+
+#### Layout
+
+ ![Layout](./layout.svg)
+ 
+ #### Site map
+ ![Site map](./sitemap.svg)
