@@ -79,7 +79,6 @@ express()
   .post('/searchTitle', async function (req, res) {
     const title = req.body.title
     const apiKey = process.env.OMDb_API_KEY
-    // const apiKey2 = process.env.WATCHMODE_API_KEY
     const urlApi = `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
 
     const response = await fetch(urlApi, {
@@ -89,24 +88,15 @@ express()
 
     const result = await response.json()
 
-    console.log(result)
-
     res.json({ imdbID: result.imdbID, Title: result.Title, Year: result.Year, Rated: result.Rated, Runtime: result.Runtime, Genre: result.Genre, Director: result.Director, Actors: result.Actors, Plot: result.Plot })
   })
-
-
-
-
   .get('/services', (req, res) => {
     res.render('pages/services')
   })
   .post('/searchServices', async function (req, res) {
     const id = req.body.id
-    // const apiKey = process.env.OMDb_API_KEY
     const apiKey2 = process.env.WATCHMODE_API_KEY
-    //const urlApi = `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`
-
-    const urlApi = `https://api.watchmode.com/v1/title/${id}/sources/?apiKey=${apiKey2}` 
+    const urlApi = `https://api.watchmode.com/v1/title/${id}/sources/?apiKey=${apiKey2}`
 
     const response = await fetch(urlApi, {
       method: 'GET',
@@ -115,19 +105,8 @@ express()
 
     const result = await response.json()
 
-    //console.log(result[0])
-    //for(let i = 0; i < result.length; i++) {
-    //  res.json({name: result[i].name }) //add display information inside curly braces.
-   // }
-
-    res.json({name1: result[0].name, name2: result[1].name, name3: result[2].name })
+    res.json({ name1: result[0].name, name2: result[1].name, name3: result[2].name })
   })
-
-
-
-
-
-
 
   .get('/login', (req, res) => {
     res.render('pages/login')
@@ -148,7 +127,6 @@ express()
 
       const insertSql = "INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES('" + username + "', '" + password + "', '" + firstName + "', '" + lastName + "', '" + region + "');"
 
-      // INSERT INTO users (user_username, user_password, user_first_name, user_last_name, user_region_id) VALUES('test2', 'password3', 'Paul', 'Smith', 1);
       await client.query(insertSql)
 
       res.json({ ok: true })
@@ -244,10 +222,3 @@ module.exports = {
   query,
   queryAllMovies
 } // function names
-
-
-
-'https://api.watchmode.com/v1/title/3173903/details/?apiKey=BKrbOhwMounsJ1t1G4n1uTnPKRJezYCPbwqWv7FR';
-
-
-'https://api.watchmode.com/v1/title/tt0113243/sources/?apiKey=BKrbOhwMounsJ1t1G4n1uTnPKRJezYCPbwqWv7FR'
