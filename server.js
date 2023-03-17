@@ -38,7 +38,7 @@ const queryAllMovies = async function () {
   return { movies: results }
 }
 
-const queryUserFavorites = async function (username, password) {
+const queryUserFavorites = async function () {
   // const sql = "SELECT * FROM favorites WHERE user_username = '" + req.body.username + "' AND user_password = '" + req.body.password + "';"
   // const sql = "SELECT * FROM favorites WHERE user_username = '" + username + "' AND user_password = '" + password + "';"
 
@@ -232,5 +232,6 @@ express()
 
 module.exports = {
   query,
-  queryAllMovies
+  queryAllMovies,
+  queryUserFavorites
 } // function names

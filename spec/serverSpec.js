@@ -1,4 +1,5 @@
 const { queryAllMovies } = require('../server.js')
+const { queryUserFavorites } = require('../server.js')
 
 describe('server', function () {
   const baseUrl = 'http://localhost:5163'
@@ -34,6 +35,15 @@ describe('server', function () {
   describe("GET '/login'", function () {
     shouldBeAbove200('/login')
   })
+  describe("GET '/services'", function () {
+    shouldBeAbove200('/services')
+  })
+  describe("GET '/AddFavs'", function () {
+    shouldBeAbove200('/AddFavs')
+  })
+  describe("GET '/favorites'", function () {
+    shouldBeAbove200('/favorites')
+  })
   describe("GET '/health'", function () {
     shouldBeLessThan399('/health')
   })
@@ -51,6 +61,15 @@ describe('server', function () {
   })
   describe("GET '/login'", function () {
     shouldBeLessThan399('/login')
+  })
+  describe("GET '/services'", function () {
+    shouldBeLessThan399('/services')
+  })
+  describe("GET '/AddFavs'", function () {
+    shouldBeLessThan399('/AddFavs')
+  })
+  describe("GET '/favorites'", function () {
+    shouldBeLessThan399('/favorites')
   })
   describe("POST '/user'", function () {
     const url = new URL('/user', baseUrl)
@@ -76,12 +95,93 @@ describe('server', function () {
       expect(results.ok).toBeTrue()
     })
   })
+  describe("POST '/searchTitle'", function () {
+    const url = new URL('/searchTitle', baseUrl)
+    it('should accept valid title', async function () {
+      const data = {
+        title: 'Hackers'
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      expect(response.ok).toBeTrue()
+    })
+  })
+  describe("POST '/searchServices'", function () {
+    const url = new URL('/searchServices', baseUrl)
+    it('should accept valid ID', async function () {
+      const data = {
+        id: 'tt0113243'
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      expect(response.ok).toBeTrue()
+    })
+  })
+  describe("POST '/AddToFav'", function () {
+    const url = new URL('/AddToFav', baseUrl)
+    it('should accept valid information and save', async function () {
+      const data = {
+        username: 'Username',
+        password: 'Password',
+        movieName: 'MovieName',
+        movieDescription: 'MovieDescription',
+        serviceName: 'ServiceName'
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      expect(response.ok).toBeTrue()
+    })
+    it('should reject invalid information', async function () {
+      const data = {
+        username: '',
+        password: '',
+        movieName: '',
+        movieDescription: '',
+        serviceName: ''
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      expect(response.ok).toBeFalse()
+    })
+  })
   describe('queryAllMovies', function () {
     it('should return results', async function () {
       const results = await queryAllMovies()
       expect(results).toBeDefined()
       expect(results.movies).toBeDefined()
       expect(results.movies.length).toBeGreaterThanOrEqual(0)
+    })
+  })
+  describe('queryUserFavorites', function () {
+    it('should return results', async function () {
+      const results = await queryUserFavorites()
+      expect(results).toBeDefined()
+      expect(results.favorites).toBeDefined()
+      expect(results.favorites.length).toBeGreaterThanOrEqual(0)
     })
   })
 })
