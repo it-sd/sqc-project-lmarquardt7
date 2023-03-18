@@ -99,7 +99,7 @@ express()
 
     const result = await response.json()
 
-    res.json({ name1: result[0].name, name2: result[1].name, name3: result[2].name })
+    res.json({ name1: result[0].name, name2: result[1].name, name3: result[2].name }) // Possible Issue
   })
 
   .get('/login', (req, res) => {
