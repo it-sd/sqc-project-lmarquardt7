@@ -99,7 +99,12 @@ express()
 
     const result = await response.json()
 
-    res.json({ name1: result[0].name, name2: result[1].name, name3: result[2].name }) // Possible Issue
+    if (result.statusCode === '404' || result.success === false) {
+      res.status(400).send('Movie ID not found, please try again. Thank You!')
+      res.end()
+    } else {
+      res.json({ name1: result[0].name, name2: result[1].name, name3: result[2].name }) // Needed to add validation to prevent site from crashing
+    }
   })
 
   .get('/login', (req, res) => {
